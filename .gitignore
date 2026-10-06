@@ -1,5 +1,6 @@
 venv/
-*.pyc
-data/raw/
 __pycache__/
-.DS_Storescratch.py
+*.pyc
+.DS_Store
+data/raw/
+scratch.py
