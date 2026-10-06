@@ -22,7 +22,7 @@ Using Robert Shiller's monthly dataset, price is decomposed as **P = E × (P/E)*
 
 ## Method and data checks
 
-- Source: Shiller monthly data (price, dividends, earnings, CPI).
+- Source: Shiller monthly data (price, dividends, earnings, CPI). 
 - Cleaning: multi-row Excel header, footnote row, trailing months without reported earnings, and float-encoded dates (1871.1 = October) all handled in `src/data_loader.py`. Final table: 1,866 monthly rows, Jan 1871 to Jun 2026, no missing values.
 - Earnings are trailing twelve months; Shiller interpolates quarterly earnings to months, so monthly earnings growth is smoother than reality.
 - CAPE is built here from CPI-adjusted prices and a 120-month average of real earnings.
@@ -31,7 +31,7 @@ Using Robert Shiller's monthly dataset, price is decomposed as **P = E × (P/E)*
 ## Run it
 
     pip install -r requirements.txt
-    # place Shiller's ie_data.xls in data/raw/
+    # download ie_data.xls from shillerdata.com and place it in data/raw/
     python main.py
 
 ## Structure
