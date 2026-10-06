@@ -5,6 +5,8 @@ What drove S&P 500 returns since 1871: earnings growth or investors paying a hig
 Using Robert Shiller's monthly dataset, price is decomposed as **P = E × (P/E)**, so in logs
 **ln(P) = ln(E) + ln(P/E)**: every price move splits exactly into earnings growth and multiple change.
 
+![Decade decomposition](outputs/decade_decomposition.png)
+
 ## Key findings
 
 - **$1 in Jan 1871 became ~$1,678 (nominal price) by Jun 2026.** Earnings grew ~738x and the P/E went from 11.1 to 25.2.
@@ -15,7 +17,6 @@ Using Robert Shiller's monthly dataset, price is decomposed as **P = E × (P/E)*
 
 ## Charts
 
-![Decade decomposition](outputs/decade_decomposition.png)
 ![Cumulative decomposition](outputs/cumulative.png)
 ![P/E vs CAPE](outputs/pe_vs_cape.png)
 
