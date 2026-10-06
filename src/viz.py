@@ -34,3 +34,29 @@ def plot_cumulative(df: pd.DataFrame, path: str) -> None:
     ax.legend()
     fig.tight_layout()
     fig.savefig(path, dpi=150)
+
+def plot_pe_vs_cape(df: pd.DataFrame, path: str) -> None:
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(df["Date"], df["PE"], color="#e07a5f", label="Trailing P/E (1-year earnings)")
+    ax.plot(df["Date"], df["CAPE"], color="#2a6f97", label="CAPE (10-year real earnings)")
+    ax.set_ylabel("Valuation multiple")
+    ax.set_title("Trailing P/E vs CAPE: smoothing earnings removes the 2009 distortion")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+
+def plot_rolling_regime(df: pd.DataFrame, path: str) -> None:
+    d = df.dropna(subset=["regime"])
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(d["Date"], d["ret_E_roll"], color="#2a6f97", label="Earnings (trailing 10y)")
+    ax.plot(d["Date"], d["ret_PE_roll"], color="#e07a5f", label="P/E multiple (trailing 10y)")
+    lo, hi = ax.get_ylim()
+    ax.fill_between(d["Date"], lo, hi, where=(d["regime"] == "multiple-driven").values,
+                    color="#e07a5f", alpha=0.12, label="Multiple-driven window")
+    ax.set_ylim(lo, hi)
+    ax.axhline(0, color="gray", linewidth=0.8)
+    ax.set_ylabel("Trailing 10-year cumulative log change")
+    ax.set_title("What drove the S&P 500 over each trailing 10 years")
+    ax.legend(loc="upper left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
